@@ -8,4 +8,40 @@
         <title>Dashboard Login - Student Attendance Monitoring System</title>
         <link href="{% static 'dashboard/css/login.css' %}" rel="stylesheet"/>
     </head>
+
+    <body>
+        <header>
+            <h1>Login to Student Attendance Dashboard</h1>
+        </header>
+
+        <main>
+            <div class="form">
+                <form id="login-form">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" required type="text"/>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" required type="password"/>
+                    </div>
+
+                    <div class="field">
+                        <button type="submit" id="login-btn">Login</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <div class="modal" id="alert-box">
+            <div class="modal-content">
+                <p id="alert-message">This is an alert message.</p>
+                <button id="alert-btn">OK</button>
+            </div>
+        </div>
+    </body>
+
+    <script type="module" src="{% static 'dashboard/js/login.js' %}"></script>
 </html>
