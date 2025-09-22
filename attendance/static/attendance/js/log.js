@@ -22,7 +22,6 @@ attendanceForm.addEventListener("submit", async e => {
     
     if (resp.ok) {
         const data = await resp.json();
-        console.log(data);
 
         if (data.status) {
             showAlert(data.message);
@@ -30,6 +29,7 @@ attendanceForm.addEventListener("submit", async e => {
             showAlert("Something went wrong trying to log your attendance.")
         }
     } else {
+        showAlert("Something went wrong trying to submit your attendance.")
         console.error("Error submitting form");
     }
 })
