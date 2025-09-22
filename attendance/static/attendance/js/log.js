@@ -1,4 +1,5 @@
 import { getCookie } from "../utils/getCookie.js";
+import { showAlert } from "../utils/alertBox.js";
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -22,6 +23,12 @@ attendanceForm.addEventListener("submit", async e => {
     if (resp.ok) {
         const data = await resp.json();
         console.log(data);
+
+        if (data.status) {
+            showAlert(data.message);
+        } else {
+            showAlert("Something went wrong trying to log your attendance.")
+        }
     } else {
         console.error("Error submitting form");
     }
