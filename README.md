@@ -12,7 +12,7 @@
 The attendance is, for now, saved into a local database (SQLite) built into Django. **This is not ready for deployment and is only in its testing/presentation stages**. There is no stable release and there are a lot of issues yet to be tackled (such as how this can be employed for several classrooms, not just 1.)
 
 ### TODO:
-- Faculty dashboard login
+- ~~Faculty dashboard login~~
 - Faculty dashboard design
 - IP (or MAC?) address logging to prevent cheating (e.g. logging for others)
 - Faculty dashboard settings & features
