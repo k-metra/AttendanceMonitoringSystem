@@ -13,7 +13,7 @@ def log_api(request):
 
         if student_number and full_name:
             attendance.objects.create(student_number=student_number, full_name=full_name)
-            return JsonResponse({"status": "success", "message": f"Attendance for {full_name} logged successfully."})
+            return JsonResponse({"status": True, "message": f"Attendance for {full_name} logged successfully."})
         else:
-            return JsonResponse({"status": "failed", "message": "Missing student number or full name."})
-    return JsonResponse({"status": "failed", "message": "Invalid request method."})
+            return JsonResponse({"status": False, "message": "Missing student number or full name."})
+    return JsonResponse({"status": False, "message": "Invalid request method."})
