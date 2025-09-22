@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from attendance.models import attendance
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 
 # temporarily comment as we are in testing
@@ -27,3 +28,8 @@ def dashboard_login_api(request):
 
 def dashboard_login_view(request):
     return render(request, "dashboard/login.html")
+
+def dashboard_logout(request):
+    logout(request)
+
+    return redirect(settings.LOGIN_URL)
