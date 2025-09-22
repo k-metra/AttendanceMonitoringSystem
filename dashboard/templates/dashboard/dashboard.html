@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Student Attendance Dashboard</title>
+        <!--css stylesheet here-->
+    </head>
+
+    <body>
+        <header>
+            <h1>Attendance Dashboard</h1>
+        </header>
+
+        <main>
+            <div class="body-title">
+                <h2>Today's Attendance</h2>
+            </div>
+
+            <div class="table-container">
+                <table border="1" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <th>Log ID</th>
+                        <th>Student Number</th>
+                        <th>Full Name</th>
+                        <th>Timestamp</th>
+                    </tr>
+
+                    {% for record in data_list %}
+                    <tr>
+                        <td>{{ record.log_id }}</td>
+                        <td>{{ record.student_number }}</td>
+                        <td>{{ record.full_name }}</td>
+                        <td>{{ record.timestamp }}</td>
+                    </tr>
+
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No attendance records yet.</td>
+                    </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </main>
+    </body>
+</html>
