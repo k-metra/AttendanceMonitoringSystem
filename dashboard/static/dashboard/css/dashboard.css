@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr, th, td {
+    padding: 8px;
+}
+
+header {
+    background: black;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    margin-left: 35px;  
+}
+
+header button {
+    padding: 10px 20px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgb(255,255,255);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 24px;
+}
+
+header button:hover {
+    background: white;
+    color: black;
+}
+

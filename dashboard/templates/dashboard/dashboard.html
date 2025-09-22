@@ -6,12 +6,19 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Student Attendance Dashboard</title>
-        <!--css stylesheet here-->
+        <link href="{% static 'dashboard/css/dashboard.css' %}" rel="stylesheet"/>
     </head>
 
     <body>
         <header>
-            <h1>Attendance Dashboard</h1>
+            <div class="title">
+                <h1>Attendance Dashboard</h1>
+            </div>
+
+            <div class="logout-container">
+                <button id="logoutBtn">Logout</button>
+            </div>
+            
         </header>
 
         <main>
