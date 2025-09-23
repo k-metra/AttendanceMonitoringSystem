@@ -54,7 +54,7 @@ def dashboard_export(request):
 
     writer = csv.writer(response)
 
-    writer.writerow(['Log ID', 'Studnet Number', 'Full Name', 'Timestamp'])
+    writer.writerow(['Log ID', 'Student Number', 'Full Name', 'Timestamp'])
     records = attendance.objects.all().order_by('timestamp')
 
     for record in records:
