@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import requires_csrf_token
 from attendance.models import attendance
 
 from django.contrib.auth import authenticate, login, logout
@@ -33,3 +34,9 @@ def dashboard_logout(request):
     logout(request)
 
     return redirect(settings.LOGIN_URL)
+
+@requires_csrf_token
+def dashboard_clear(request):
+    if request.method == "POST":
+        attendance.objects.all().delete()
+        return JsonResponse({"success": True, "message": "All attendance records have been cleared."})
