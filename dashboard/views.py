@@ -13,7 +13,8 @@ from django.http import JsonResponse
 @login_required
 def dashboard_view(request):
     data = attendance.objects.all()
-    return render(request, "dashboard/dashboard.html", {"data_list": data})
+    latestCheckIn = attendance.objects.last().timestamp if attendance.objects.exists() else "N/A"
+    return render(request, "dashboard/dashboard.html", {"data_list": data, "latestCheckIn": latestCheckIn})
 
 def dashboard_login_api(request):
     if request.method == "POST":
