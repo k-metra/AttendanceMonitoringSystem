@@ -26,7 +26,21 @@ const getCsrfToken = () => {
 }
 
 exportBtn.addEventListener("click", async () => {
-    window.location.replace("/dashboard/export/");
+    const today = new Date()
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    
+    const filename = `attendance_${day}-${month}-${year}.csv`;
+
+    const link = document.createElement('a');
+    link.href = '/dashboard/export/';
+    link.download = filename;
+    link.style.display = 'none';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 });
 
 confirmationNo.addEventListener("click", () => {

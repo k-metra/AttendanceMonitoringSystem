@@ -7,4 +7,5 @@ urlpatterns =[
     path("login/", dashboard_login_view, name="dashboard-login"),
     path("logout/", dashboard_logout, name="dashboard-logout"),
     path("clear/", dashboard_clear, name="dashboard-clear"),
+    path("export/", dashboard_export, name="dashboard-export")
 ]

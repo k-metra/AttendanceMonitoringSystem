@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import requires_csrf_token
 from attendance.models import attendance
+from datetime import datetime
 
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
@@ -40,3 +41,27 @@ def dashboard_clear(request):
     if request.method == "POST":
         attendance.objects.all().delete()
         return JsonResponse({"success": True, "message": "All attendance records have been cleared."})
+
+def dashboard_export(request):
+    import csv
+    from django.http import HttpResponse
+
+    response = HttpResponse(content_type='text/csv')
+    current_date = datetime.now().strftime("%d-%m-%Y")
+
+    filename = f"attendance_{current_date}.csv"
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+
+    writer = csv.writer(response)
+
+    writer.writerow(['Log ID', 'Studnet Number', 'Full Name', 'Timestamp'])
+    records = attendance.objects.all().order_by('timestamp')
+
+    for record in records:
+        writer.writerow([
+            record.id, 
+            record.student_number, 
+            record.full_name, 
+            record.timestamp])
+    
+    return response
