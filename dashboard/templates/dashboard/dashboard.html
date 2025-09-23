@@ -36,8 +36,17 @@
             </div>
 
             <div class="table-container">
+                <div class="select-all-container">
+                    <label>
+                        <input type="checkbox" id="select-all"> Select All</input>
+                    </label>
+                    <span id="selection-count"></span>
+                </div>
                 <table border="1" cellpadding="5" cellspacing="0">
                     <tr>
+                        <th class="checkbox-column">
+                            <input type="checkbox" id="header-checkbox"/>
+                        </th>
                         <th>Log ID</th>
                         <th>Student Number</th>
                         <th>Full Name</th>
