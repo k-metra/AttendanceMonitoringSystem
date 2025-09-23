@@ -59,7 +59,7 @@ def dashboard_export(request):
 
     for record in records:
         writer.writerow([
-            record.id, 
+            record.log_id, 
             record.student_number, 
             record.full_name, 
             record.timestamp])
