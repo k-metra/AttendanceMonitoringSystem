@@ -37,9 +37,6 @@
 
             <div class="table-container">
                 <div class="select-all-container">
-                    <label>
-                        <input type="checkbox" id="select-all"> Select All</input>
-                    </label>
                     <span id="selection-count"></span>
                 </div>
                 <table border="1" cellpadding="5" cellspacing="0">
@@ -55,6 +52,9 @@
 
                     {% for record in data_list %}
                     <tr>
+                        <td class="checkbox-column">
+                            <input type="checkbox" class="row-checkbox" value="{{ record.log_id }}"/>
+                        </td>
                         <td>{{ record.log_id }}</td>
                         <td>{{ record.student_number }}</td>
                         <td>{{ record.full_name }}</td>
@@ -94,4 +94,5 @@
     </body>
 
     <script type="module" src="{% static 'dashboard/js/dashboard.js' %}"></script>
+    <script src="{% static 'dashboard/js/selection.js' %}"></script>
 </html>
