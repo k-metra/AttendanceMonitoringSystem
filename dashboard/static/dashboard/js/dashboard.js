@@ -47,30 +47,32 @@ confirmationNo.addEventListener("click", () => {
     confirmationModal.style.display = "none";
 })
 
-confirmationYes.addEventListener("click", async () => {
-    confirmationModal.style.display = "none";
-    const token = getCsrfToken();
-
-    if (!token) {
-        console.error("Cannot find CSRF token.");
-        return;
-    }
-    const response = await fetch("/dashboard/clear/", {
-        method: "POST",
-        headers: { "X-CSRFToken": token }
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-        window.location.reload();
-    } else {
-        console.error("Failed to clear attendance records: ", data.message);
-    }
-});
-
 clearBtn.addEventListener("click", () => {
     confirmationModal.style.display = "flex";
+
+    confirmationYes.addEventListener("click", async () => {
+        confirmationYes.removeEventListener("click", this);
+        confirmationModal.style.display = "none";
+        const token = getCsrfToken();
+
+        if (!token) {
+            console.error("Cannot find CSRF token.");
+            return;
+        }
+        const response = await fetch("/dashboard/clear/", {
+            method: "POST",
+            headers: { "X-CSRFToken": token }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            window.location.reload();
+        } else {
+            console.error("Failed to clear attendance records: ", data.message);
+        }
+
+    });
 });
 
 logoutBtn.addEventListener("click", async () => {
