@@ -26,6 +26,15 @@
                 <h2>Today's Attendance</h2>
             </div>
 
+            <div class="divider">
+                <hr/>
+            </div>
+
+            <div class="stats">
+                <span>Total Present: {{ data_list|length }}</span>
+                <span>Last Check-In: {{ latestCheckIn }}</span>
+            </div>
+
             <div class="table-container">
                 <table border="1" cellpadding="5" cellspacing="0">
                     <tr>
