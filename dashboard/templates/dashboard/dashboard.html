@@ -21,7 +21,7 @@
             
         </header>
 
-        <main>
+        <main class="main-content">
             <div class="body-title">
                 <h2>Today's Attendance</h2>
             </div>
@@ -51,7 +51,27 @@
                     {% endfor %}
                 </table>
             </div>
+
+            <div class="divider">
+                <hr/>
+            </div>
+            
+
+            <div class="options">
+                <button id="exportBtn">Export to CSV</button>
+                <button id="clearBtn">Clear All Records</button>
+            </div>
         </main>
+
+        <div class="confirmation-box" id="confirmationBox">
+            <div class="confirmation-content">
+                <p>Are you sure you want to clear all records?</p>
+                <div class="confirmation-buttons">
+                    <button id="confirm-clear-yes">Yes</button>
+                    <button id="confirm-clear-no">No</button>
+                </div>
+            </div>
+        </div>
     </body>
 
     <script type="module" src="{% static 'dashboard/js/dashboard.js' %}"></script>
