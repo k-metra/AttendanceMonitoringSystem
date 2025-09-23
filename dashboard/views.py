@@ -8,6 +8,8 @@ from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 
+import json
+
 # temporarily comment as we are in testing
 # TODO: DO NOT FORGET TO UN-COMMENT THIS DECORATOR KURT !!!!!
 @login_required
@@ -66,3 +68,21 @@ def dashboard_export(request):
             record.timestamp])
     
     return response
+
+@requires_csrf_token
+def dashboard_delete_selected(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            log_ids = data.get("log_ids", [])
+
+            if not log_ids:
+                return JsonResponse({"success": False, "message":"No log IDs provided."})
+
+            deleted_count = attendance.objects.filter(log_id__in=log_ids).delete()[0]
+
+            return JsonResponse({"success": True, "message": f"Deleted {deleted_count} records."})
+        except Exception as e:
+            return JsonResponse({"success": False, "message": str(e)})
+        
+    return JsonResponse({"success": False, "message": "Invalid request method."})
