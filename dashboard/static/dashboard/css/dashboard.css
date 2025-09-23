@@ -33,7 +33,7 @@ tr, th, td {
     border: 2px solid black;
 }
 
-span {
+.summary {
     font-weight: 500;
     background: rgba(0,0,0,0.6);
     padding: 12px;
@@ -176,4 +176,27 @@ hr {
         flex-direction: column;
         gap: 5px;
     }
+}
+
+.select-all-container {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.checkbox-column {
+    width: 40px;
+    text-align: center;
+}
+
+.row-checkbox {
+    cursor: pointer;
+}
+
+tr.selected {
+    background-color: #e3f2fd;
+}
+
+.delete-selected-btn:disabled {
+    color: grey;
+    cursor: not-allowed;
 }
