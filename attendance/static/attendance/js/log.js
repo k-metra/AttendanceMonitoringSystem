@@ -1,5 +1,5 @@
 import { getCookie } from "../utils/getCookie.js";
-import { showAlert } from "../utils/alertBox.js";
+import { alertBoxManager } from "../utils/alertBox.js";
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -46,12 +46,12 @@ attendanceForm.addEventListener("submit", async e => {
         const data = await resp.json();
 
         if (data.status) {
-            showAlert(data.message);
+            new alertBoxManager(data.message, true);
         } else {
-            showAlert("Something went wrong trying to log your attendance.")
+            new alertBoxManager("Something went wrong trying to log your attendance.", false);
         }
     } else {
-        showAlert("Something went wrong trying to submit your attendance.")
+        new alertBoxManager("Something went wrong trying to submit your attendance.", false);
         console.error("Error submitting form");
     }
 })
