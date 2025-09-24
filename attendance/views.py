@@ -42,7 +42,7 @@ def log_api(request):
 
         if student_number and full_name:
             attendance.objects.create(student_number=student_number, full_name=full_name)
-            ip_log.objects.create(ip_address=ip)
+            ip_log.objects.update_or_create(ip_address=ip)
             return JsonResponse({"status": True, "message": f"Attendance for {full_name} logged successfully."})
         else:
             return JsonResponse({"status": False, "message": "Missing student number or full name."})
