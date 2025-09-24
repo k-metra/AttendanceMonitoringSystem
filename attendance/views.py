@@ -42,9 +42,11 @@ def log_api(request):
         student_number = request.POST.get("student_number")
         full_name = request.POST.get("full_name")
 
+        timestamp = timezone.now().isoformat()
+
         if student_number and full_name:
-            attendance.objects.create(student_number=student_number, full_name=full_name)
-            ip_log.objects.update_or_create(ip_address=ip)
+            att = attendance.objects.create(student_number=student_number, full_name=full_name, timestamp=timestamp)
+            ip_log.objects.update_or_create(ip_address=ip, log_id=att.log_id)
             return JsonResponse({"status": True, "message": f"Attendance for {full_name} logged successfully."})
         else:
             return JsonResponse({"status": False, "message": "Missing student number or full name."})
