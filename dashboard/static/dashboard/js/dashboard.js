@@ -1,3 +1,5 @@
+import { EntryBox } from "./addNewEntry.js";
+
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
@@ -5,6 +7,7 @@ const logoutBtn = $("#logoutBtn");
 const exportBtn = $("#exportBtn");
 const clearBtn = $("#clearBtn");
 const confirmationModal = $("#confirmationBox");
+const addRecordBtn = $("#addRecordBtn");
 
 const confirmationNo = $("#confirm-clear-no");
 const confirmationYes = $("#confirm-clear-yes");
@@ -78,6 +81,10 @@ clearBtn.addEventListener("click", () => {
 logoutBtn.addEventListener("click", async () => {
     window.location.replace("/dashboard/logout/");
 });
+
+addRecordBtn?.addEventListener("click", () => {
+    new EntryBox();
+})
 
 /*window.addEventListener("beforeunload", (e) => {
     e.preventDefault();
