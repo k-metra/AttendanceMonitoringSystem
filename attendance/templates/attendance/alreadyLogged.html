@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <title>Student Attendance Monitoring System</title>
+        <link href="{% static 'attendance/css/alreadyLogged.css' %}" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1>Student Attendance Monitoring System</h1>
+        </header>
+
+        <main>
+            <h2>You've already logged your attendance for today!</h2>
+            <h5>To avoid cheating, you can only log once every 12 hours.</h5>
+
+            <div class="small">
+                <a href="{% url 'dashboard' %}">I'm a teacher</a>
+            </div>
+        </main>
+    </body>
+</html>
