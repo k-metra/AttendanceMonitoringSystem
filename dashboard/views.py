@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import requires_csrf_token
-from attendance.models import attendance
+from attendance.models import attendance, ip_log
 from datetime import datetime
 
 from django.contrib.auth import authenticate, login, logout
@@ -43,6 +43,7 @@ def dashboard_logout(request):
 def dashboard_clear(request):
     if request.method == "POST":
         attendance.objects.all().delete()
+        ip_log.objects.all().delete()
         return JsonResponse({"success": True, "message": "All attendance records have been cleared."})
 
 def dashboard_export(request):
@@ -79,9 +80,21 @@ def dashboard_delete_selected(request):
             if not log_ids:
                 return JsonResponse({"success": False, "message":"No log IDs provided."})
 
-            deleted_count = attendance.objects.filter(log_id__in=log_ids).delete()[0]
+            delete_counter = 0
+            for id in log_ids:
+                try:
+                    attendance.objects.get(log_id=id).delete()
+                    ip_log.objects.get(log_id=id).delete()
+                    
+                    delete_counter += 1
+                except attendance.DoesNotExist:
+                    print(f"Attendance log ID {id} did not exist in the database.")
+                except ip_log.DoesNotExist:
+                    print(f"IP log did not exist.")
+                except Exception as ex:
+                    print(f"Error: {ex.__str__}")
 
-            return JsonResponse({"success": True, "message": f"Deleted {deleted_count} records."})
+            return JsonResponse({"success": True, "message": f"Deleted {delete_counter} records."})
         except Exception as e:
             return JsonResponse({"success": False, "message": str(e)})
         
