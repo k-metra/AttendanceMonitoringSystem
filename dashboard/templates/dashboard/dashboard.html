@@ -77,6 +77,7 @@
 
             <div class="options">
                 <button id="exportBtn">Export to CSV</button>
+                <button class="add-btn" id="addRecordBtn">Add Entry</button>>
                 <button id="deleteSelectedBtn" class="delete-selected-btn" disabled>Remove Selected</button>
                 <button id="clearBtn">Clear All Records</button>
             </div>
@@ -89,6 +90,36 @@
                     <button id="confirm-clear-yes">Yes</button>
                     <button id="confirm-clear-no">No</button>
                 </div>
+            </div>
+        </div>
+
+        <div class="add-entry-box">
+            <div class="add-entry-content">
+                <div class="add-entry-header">
+                    <span class="add-entry-title">Add Attendance Entry</span>
+                    <button class="close-btn" id="closeAddEntryBox">&times;</button>
+                </div>
+
+                <div class="add-entry-body">
+                    <form id="addEntryForm">
+                        {% csrf_token %}
+
+                        <div class="field">
+                            <label for="studentNumber">Student Number</label>
+                            <input type="text" id="studentNumber" name="student_number" required/>
+                        </div>
+
+                        <div class="field">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="full_name" required/>
+                        </div>
+
+                        <div class="actions">
+
+                            <button type="submit" id="addEntryBtn">Add Entry</button>
+                        </div>
+                    </form>
+                </div>    
             </div>
         </div>
     </body>
