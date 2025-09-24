@@ -178,6 +178,17 @@ hr {
     }
 }
 
+@media (max-width: 1366px) {
+    .main {
+        margin-top: 100px;
+    }
+
+    .stats {
+        width: 50%;
+
+    }
+}
+
 .select-all-container {
     margin-bottom: 10px;
     text-align: left;
