@@ -78,3 +78,8 @@ clearBtn.addEventListener("click", () => {
 logoutBtn.addEventListener("click", async () => {
     window.location.replace("/dashboard/logout/");
 });
+
+window.addEventListener("beforeunload", (e) => {
+    e.preventDefault();
+    
+});
