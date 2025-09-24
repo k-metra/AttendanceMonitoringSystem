@@ -69,3 +69,6 @@ def check_ip_api(request):
             return JsonResponse({"status": False, "message": result[1] if len(result) > 1 else "Failed."})
     else:
         return JsonResponse({"status": True, "message":"Invalid request method."})
+
+def already_logged_view(request):
+    return render(request, "attendance/alreadyLogged.html")
