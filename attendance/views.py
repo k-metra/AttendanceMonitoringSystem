@@ -9,18 +9,20 @@ def check_ip(ip):
     # how many hours before a user may be able to submit again
     DURATION_THRESHOLD = 12
 
-    ip_logs = ip_log.objects.filter(ip_address=ip).order_by("-timestamp")
+    try:
+        logged_ip = ip_log.objects.get(ip_address=ip)
 
-    if ip_logs.exists():
-        latest = ip_logs.first()
-        elapsed = (timezone.now() - latest.timestamp)
+        elapsed = (timezone.now() - logged_ip.timestamp)
+        threshold_in_seconds = DURATION_THRESHOLD * 60 * 60
 
-        if (elapsed.total_seconds() <= (DURATION_THRESHOLD * 60 * 60)):
+        if (elapsed.total_seconds() <= threshold_in_seconds):
             return (False, f"Unsuccessful. Elapsed: {elapsed.total_seconds()}.")
         else:
             return (True, "Successful.")
-    else:
-        return (True, f"No logs for IP address: {ip}")
+    except ip_log.DoesNotExist:
+        return(True, "No logged IP found.")
+    except Exception as ex:
+        return(True, f"Something went wrong checking the IP: {ex.__str__}")
 
 
 # Create your views here.
