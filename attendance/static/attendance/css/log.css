@@ -136,6 +136,13 @@ button[type="submit"]:hover {
     }
 }
 
+@media (max-width:1367px){
+    .modal-content {
+        width: 30%;
+        height: 25%;
+    }
+}
+
 .small {
     font-size: 0.8rem;
     color: rgba(255,255,255,0.7);
