@@ -9,4 +9,5 @@ urlpatterns =[
     path("clear/", dashboard_clear, name="dashboard-clear"),
     path("export/", dashboard_export, name="dashboard-export"),
     path("delete-selected/", dashboard_delete_selected, name="dashboard-delete-selected"),
+    path("add-entry-api/", dashboard_add_entry, name="dashboard-add-entry"),
 ]

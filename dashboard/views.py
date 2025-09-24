@@ -99,3 +99,19 @@ def dashboard_delete_selected(request):
             return JsonResponse({"success": False, "message": str(e)})
         
     return JsonResponse({"success": False, "message": "Invalid request method."})
+
+@requires_csrf_token
+def dashboard_add_entry(request):
+    if request.method == 'POST':
+        try:
+            student_number = request.POST.get("student_number")
+            full_name = request.POST.get("full_name")
+
+            attendance.objects.create(student_number=student_number, full_name=full_name)
+            
+            return JsonResponse({"status": True, "message": "Successfully created new entry."})
+        except Exception as ex:
+            print("Ran into an error: " + ex.__str__())
+            return JsonResponse({"status": False, "message": ex.__str__()})
+    else:
+        return JsonResponse({"status": False, "message":"Invalid request method."}, status=400)
