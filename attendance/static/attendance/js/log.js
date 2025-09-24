@@ -6,6 +6,28 @@ const $$ = (selector) => document.querySelectorAll(selector);
 
 const attendanceForm = $("#attendance-form");
 
+const checkIp = async () => {
+    await(fetch('/attendance/check-ip-api/'))
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP Error! Status: ${response.status} ${response.statusText}`);
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        if (data.status) {
+            console.log(data.message);
+        } else {
+            console.log(data.message);
+            console.log("it was false.");
+
+            window.location.replace("/attendance/already-logged/")
+        }
+    })
+
+}
+
 attendanceForm.addEventListener("submit", async e => {
     e.preventDefault();
 
@@ -33,3 +55,5 @@ attendanceForm.addEventListener("submit", async e => {
         console.error("Error submitting form");
     }
 })
+
+checkIp();
