@@ -182,7 +182,8 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: black;
+    background-color: #030304;
+    border-bottom: 1px solid rgba(255,255,255, 0.06);
     padding: 20px;
     color: white;
     display: flex;
@@ -190,23 +191,56 @@ header {
     align-items: center;
 }
 
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
+    color: rgb(0, 74, 235);
+    background: rgba(0, 74, 235, 0.15);
+    border-radius: 11px;
+    font-weight: normal;
+    border: 1px solid rgba(0, 74, 235,0.2);
+}
+
+.title {
+    transform: translateY(-7px);
+}
+
+.dashboard-title {
+    font-size: 26px;
+    letter-spacing: 0;
+    font-weight: 600;
+}
+
+.dashboard-subtext {
+    font-size: 14px;
+    color: #5d656b;
+    font-weight: 450;
+}
+
 h2, h3, h4, h5, h6, p, span {
     color: white;
     text-shadow: 2px 1.25px 0px rgb(0,0,0);
 }
 
-.title {
-    margin-left: 35px;  
+.title-container {
+    margin-left: 35px; 
+    display: flex;
+    gap: 12px; 
 }
 
 header button {
-    padding: 10px 20px;
+    padding: 8px 12px;
     background: transparent;
     color: white;
-    border: 1px solid rgb(255,255,255);
-    border-radius: 5px;
+    border: 1px solid rgba(255,255,255, 0.08);
+    border-radius: 10px;
     cursor: pointer;
     margin-right: 24px;
+    font-weight: 500;
+    transform: translateY(-4px);
 }
 
 header button:hover {
@@ -286,30 +320,6 @@ hr {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-@media (max-width: 600px) {
-    .stats {
-        width: 90%;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .options {
-        flex-direction: column;
-        gap: 5px;
-    }
-}
-
-@media (max-width: 1366px) {
-    .main {
-        margin-top: 100px;
-    }
-
-    .stats {
-        width: 50%;
-
-    }
 }
 
 .select-all-container {
@@ -454,4 +464,83 @@ tr.selected {
 #addEntryForm .actions button[type="submit"]:hover {
     background: rgba(255,255,255,0.65);
     color: black;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
+
+.stat-card {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    background: rgb(2, 2, 5);
+    min-width: 350px;
+    min-height: 150px;
+}
+
+.stat-card .stat-title {
+    padding: 10px;
+    font-size: 14px;
+    color:#474d52;
+    font-weight: 500;
+}
+
+.stat-card .stat-amount {
+    padding: 10px;
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(200,200,200);
+}
+
+.stat-card .stat-amount.stat-date {
+    font-size: 24px;
+}
+
+.stat-amount p {
+    font-size: 12px;
+    font-weight: normal;
+    color: #474d52;
+}
+
+@media (max-width: 600px) {
+    .stats-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .card-bottom {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1366px) {
+    .main {
+        margin-top: 100px;
+    }
+
+    .stats {
+        width: 50%;
+
+    }
 }

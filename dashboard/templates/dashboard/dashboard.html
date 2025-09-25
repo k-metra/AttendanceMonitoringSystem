@@ -12,26 +12,55 @@
 
     <body>
         <header>
-            <div class="title">
-                <h1>Attendance Dashboard</h1>
+            <div class="title-container">
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+
+                <div class="title">
+                    <span class="dashboard-title">Attendance Dashboard</span>
+                    <br>
+                    <p class="dashboard-subtext">Track and manage student attendance</p>
+                </div>
             </div>
 
             <div class="logout-container">
-                <button id="logoutBtn">Logout</button>
+                <button id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;&nbsp;Logout</button>
             </div>
             
         </header>
 
         <main class="main-content">
-            
+            <section class="statistics">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-title">
+                        <i class="fa fa-users"></i>&nbsp;Total Students
+                    </div>
+
+                    <div class="stat-amount">
+                        {{ data_list|length }}
+                        <br>
+                        <p class="stat-subtext">Students checked in today</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-title">
+                        <i class="fa fa-calendar-check"></i>&nbsp;Last Check-In
+                    </div>
+
+                    <div class="stat-amount stat-date">
+                        {{ latestCheckIn }}
+                        <br>
+                        <p class="stat-subtext">Most recent attendance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
             <div class="divider">
                 <hr/>
-            </div>
-
-            <div class="stats">
-                <span class="summary">Total Present: {{ data_list|length }}</span>
-                <span class="summary">Last Check-In: {{ latestCheckIn }}</span>
             </div>
 
             <div class="card">
