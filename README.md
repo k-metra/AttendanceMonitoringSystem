@@ -14,7 +14,8 @@ The attendance is, for now, saved into a local database (SQLite) built into Djan
 ### TODO:
 - ~~Faculty dashboard login~~
 - ~~Faculty dashboard design~~
-    - Current design is a prototype (IT'S TRASH)
+    - ~~Current design is a prototype (IT'S TRASH)~~
+    - Now it's **GOOD**.
 - IP (or MAC?) address logging to prevent cheating (e.g. logging for others)
 - Faculty dashboard settings & features
     - Such as the ability to export attendance into a downloadable .CSV or .PDF file
