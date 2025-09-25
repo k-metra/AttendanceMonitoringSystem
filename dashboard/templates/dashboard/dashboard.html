@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Student Attendance Dashboard</title>
         <link href="{% static 'dashboard/css/dashboard.css' %}" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     </head>
 
     <body>
@@ -22,9 +23,7 @@
         </header>
 
         <main class="main-content">
-            <div class="body-title">
-                <h2>Today's Attendance</h2>
-            </div>
+            
 
             <div class="divider">
                 <hr/>
@@ -35,20 +34,35 @@
                 <span class="summary">Last Check-In: {{ latestCheckIn }}</span>
             </div>
 
-            <div class="table-container">
+            <div class="card">
+                <div class="card-top">
+                    <div class="body-title">
+                        <h2>Today's Attendance</h2>
+                        <h5>Manage and track student attendance records</h5>
+                    </div>
+
+                    <div class="buttons">
+                        <button id="exportBtn"><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;Export CSV</button>
+                        <button class="add-btn" id="addRecordBtn"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Entry</button>
+                    </div>
+                </div>
+
                 <div class="select-all-container">
                     <span id="selection-count"></span>
                 </div>
-                <table border="1" cellpadding="5" cellspacing="0">
-                    <tr>
-                        <th class="checkbox-column">
-                            <input type="checkbox" id="header-checkbox"/>
-                        </th>
-                        <th>Log ID</th>
-                        <th>Student Number</th>
-                        <th>Full Name</th>
-                        <th>Timestamp</th>
-                    </tr>
+                <table class="content-table">
+                    <thead>
+                        <tr class="table-header">
+                            <th class="checkbox-column">
+                                <input type="checkbox" id="header-checkbox"/>
+                            </th>
+                            <th>Log ID</th>
+                            <th>Student Number</th>
+                            <th>Full Name</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    
 
                     {% for record in data_list %}
                     <tr>
@@ -68,19 +82,15 @@
 
                     {% endfor %}
                 </table>
-            </div>
 
-            <div class="divider">
-                <hr/>
-            </div>
+                <hr>
+
+                <div class="card-bottom">
+                    <button id="deleteSelectedBtn" class="delete-selected-btn" disabled><i class="fa fa-trash-can"></i>&nbsp;&nbsp;Remove Selected (0)</button>
+                    <button id="clearBtn"><i class="fa fa-rotate-right"></i>&nbsp;&nbsp;Clear All Records</button>
+                </div>
+            </div> 
             
-
-            <div class="options">
-                <button id="exportBtn">Export to CSV</button>
-                <button class="add-btn" id="addRecordBtn">Add Entry</button>>
-                <button id="deleteSelectedBtn" class="delete-selected-btn" disabled>Remove Selected</button>
-                <button id="clearBtn">Clear All Records</button>
-            </div>
         </main>
 
         <div class="confirmation-box" id="confirmationBox">

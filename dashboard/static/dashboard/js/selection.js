@@ -89,13 +89,15 @@ class SelectionManager {
         const count = this.selectedIds.size;
         const totalCheckboxes = $$('.row-checkbox').length;
 
-        if (selectionCount) {
+        /*if (selectionCount) {
             selectionCount.style.display = count > 0 ? 'inline' : 'none';
             selectionCount.textContent = count > 0 ? `${count} selected` : '';
-        }
+        }*/
 
         if (deleteSelectedBtn) {
             deleteSelectedBtn.disabled = count === 0;
+            const trashPrefix = "<i class='fa fa-trash-can'></i>&nbsp;&nbsp;";
+            deleteSelectedBtn.innerHTML = count > 0 ? `${trashPrefix}Remove Selected (${count})` : `${trashPrefix}Remove Selected`;
         }
 
         const allSelected = (count === totalCheckboxes && totalCheckboxes > 0);
