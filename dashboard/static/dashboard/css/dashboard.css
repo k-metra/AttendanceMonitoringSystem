@@ -27,6 +27,7 @@ main {
 
 table {
     border-radius: 10px;
+    border-spacing: 0;
     overflow: hidden;
     width: 95%;
     border: 1px solid rgba(255,255,255,0.03);
@@ -61,14 +62,14 @@ thead tr {
 
 thead, th {
   color: #f0f0f0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.5px;
   background: #060709
 }
 
 th {
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: normal;
     color: #474d52;
     font-size: 13px;
@@ -154,14 +155,13 @@ th {
 
 
 td {
-    border-top: 1px solid rgba(255,255,255,0.04);
-    border-right: 1px solid #030304;
-    border-left: 1px solid #030304;
     font-size: 15px;
     background: #030304;
-    color: rgb(156, 156, 156);   
+    color: rgb(200, 200, 200);   
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
+    border-top: 1px solid rgba(255,255,255,0.0225);
+    padding: 20px 18px;
 }
 
 .checkbox-column {
