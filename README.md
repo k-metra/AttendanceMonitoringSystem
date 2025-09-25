@@ -16,8 +16,8 @@ The attendance is, for now, saved into a local database (SQLite) built into Djan
 - ~~Faculty dashboard design~~
     - ~~Current design is a prototype (IT'S TRASH)~~
     - Now it's **GOOD**.
-- IP (or MAC?) address logging to prevent cheating (e.g. logging for others)
-- Faculty dashboard settings & features
-    - Such as the ability to export attendance into a downloadable .CSV or .PDF file
-    - The feature to clear attendance entirely, add own entry manually (in case a student does not have internet connection), or remove a specific entry
-- How do we employ such a change for several classrooms? (Current program is only designed for functionality for one classroom currently.)
+- ~~IP (or MAC?) address logging to prevent cheating (e.g. logging for others)~~
+- ~~Faculty dashboard settings & features~~
+    - ~~Such as the ability to export attendance into a downloadable .CSV or .PDF file~~
+    - ~~The feature to clear attendance entirely, add own entry manually (in case a student does not have internet connection), or remove a specific entry~~
+- How do we employ such a change for several classrooms? (Current program is only designed for functionality for one classroom currently.) **THIS HAS TO BE ADDRESSED**.
