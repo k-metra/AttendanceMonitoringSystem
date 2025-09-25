@@ -22,7 +22,7 @@ def check_ip(ip):
     except ip_log.DoesNotExist:
         return(True, "No logged IP found.")
     except Exception as ex:
-        return(True, f"Something went wrong checking the IP: {ex.__str__}")
+        return(True, f"Something went wrong checking the IP: {ex.__str__()}")
 
 
 # Create your views here.
