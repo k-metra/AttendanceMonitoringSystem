@@ -49,10 +49,10 @@ th {
 .card {
     width: 70%;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
     display: flex;  
     flex-direction: column;
-    background: rgb(2, 2, 5);
+    background: rgb(4, 4, 7);
     margin: 0;
 }
 
@@ -127,20 +127,38 @@ th {
     cursor: pointer;
 }
 
-#addRecordBtn {
+.add-btn {
     background: #114ED8;
     color: #d8d8d8;
     border: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     border-radius: 8px;
 }
 
-#addRecordBtn:hover {
+.add-btn.floating {
+    position: fixed;
+    z-index: 1000;
+    top: 20%;
+    box-shadow: 0px, 8px, 10px #114ED8;
+    transform: translateY(-1px);
+}
+
+.export-btn.floating {
+    z-index: 1000;
+    top: 20%;
+    box-shadow: 0px, 4px, 18px rgba(0,0,0,0.25);
+    position: fixed;
+    transform: translateX(-140px);
+    background: black;;
+}
+
+.add-btn:hover {
     background: #0e3cbf;
     color: white;
     cursor: pointer;
 }
 
-#exportBtn {
+.export-btn {
     background: transparent;
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.07);
@@ -477,6 +495,7 @@ section {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     gap: 30px;
 }
 
@@ -517,10 +536,31 @@ section {
     color: #474d52;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1366px) {
+    .main {
+        margin-top: 100px;
+    }
+
+    .stats {
+        width: 50%;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
     .stats-container {
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .stat-card {
+        min-width: 280px;
+    }
+
+    .stat-card .stat-amount.stat-date {
+        font-size: 18px;
     }
 
     .buttons {
@@ -532,15 +572,44 @@ section {
         align-items: center;
         justify-content: center;
     }
+
+    .card {
+        width: 98%;
+    }
+
+    .add-btn.floating {
+        transform: translateX(-50%);
+    }
+
+    .export-btn.floating {
+        transform: translateX(-150%);
+    }
 }
 
-@media (max-width: 1366px) {
-    .main {
-        margin-top: 100px;
-    }
+.scroll-to-bottom-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(150%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #282831;
+    color: rgb(158, 158, 158);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
 
-    .stats {
-        width: 50%;
+.scroll-to-bottom-btn.active {
+    transform: translateX(-50%) translateY(-50%);
+}
 
-    }
+.scroll-to-bottom-btn:hover {
+    background: #5a6166;
 }
