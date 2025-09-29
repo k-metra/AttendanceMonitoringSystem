@@ -99,10 +99,10 @@
                         <td class="checkbox-column">
                             <input type="checkbox" class="row-checkbox" value="{{ record.log_id }}"/>
                         </td>
-                        <td>{{ record.log_id }}</td>
-                        <td>{{ record.student_number }}</td>
-                        <td>{{ record.full_name }}</td>
-                        <td>{{ record.timestamp }}</td>
+                        <td class="Log_ID">{{ record.log_id }}</td>
+                        <td class="Student_Number">{{ record.student_number }}</td>
+                        <td class="Full_Name">{{ record.full_name }}</td>
+                        <td class="Timestamp">{{ record.timestamp }}</td>
                     </tr>
 
                     {% empty %}
@@ -118,6 +118,7 @@
                 <section id="bottom"></section>
                 <div class="card-bottom">
                     <button id="deleteSelectedBtn" class="delete-selected-btn" disabled><i class="fa fa-trash-can"></i>&nbsp;&nbsp;Remove Selected (0)</button>
+                    <button id="editEntryBtn" class="edit-entry-btn" disabled><i class="fa fa-pen-to-square"></i>&nbsp;&nbsp;Edit Selected Entry</button>
                     <button id="clearBtn"><i class="fa fa-rotate-right"></i>&nbsp;&nbsp;Clear All Records</button>
                 </div>
             </div> 
@@ -169,6 +170,53 @@
                 <i class="fa-solid fa-down-long"></i>
             </button>
         </div>
+
+        <div class="alert-modal">
+            <div class="overlay"></div>
+            <div class="alert-box">
+                <div class="alert-close">
+                    <button class="close-alert-btn"><i class="fa fa-xmark"></i></button>
+                </div>
+                
+                <div class="alert-message">
+                    This is an alert message.
+                </div>
+            </div>
+        </div>
+
+        <div class="edit-modal">
+            <div class="overlay"></div>
+            <div class="edit-box">
+                <div class="edit-header">
+                    <span class="edit-title">Edit Attendance Entry</span>
+                    <button class="close-edit-btn"><i class="fa fa-xmark"></i></button>
+                </div>
+
+                <div class="edit-body">
+                    <form id="editEntryForm">
+                        {% csrf_token %}
+
+                        <div class="field">
+                            <label for="editStudentNumber">Student Number</label>
+                            <input type="text" id="editStudentNumber" name="student_number" required/>
+                        </div>
+
+                        <div class="field">
+                            <label for="editFullName">Full Name</label>
+                            <input type="text" id="editFullName" name="full_name" required/>
+                        </div>
+
+                        <div class="actions">
+                            <button type="submit" id="saveEditBtn">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 BSIT-11M1 Attendance Monitoring System</p>
+        </footer>
     </body>
 
     <script type="module" src="{% static 'dashboard/js/dashboard.js' %}"></script>
