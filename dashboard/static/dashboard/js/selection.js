@@ -2,6 +2,7 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
 const deleteSelectedBtn = $("#deleteSelectedBtn");
+const editBtn = $("#editEntryBtn");
 const selectAllCheckbox = $("#selectAllCheckbox");
 const logCheckboxes = $$(".logCheckbox");
 const selectionCount = $("#selection-count")
@@ -99,6 +100,12 @@ class SelectionManager {
             const trashPrefix = "<i class='fa fa-trash-can'></i>&nbsp;&nbsp;";
             deleteSelectedBtn.innerHTML = count > 0 ? `${trashPrefix}Remove Selected (${count})` : `${trashPrefix}Remove Selected`;
         }
+
+        if (editBtn) {
+            editBtn.disabled = (count !== 1);
+        }
+
+        editBtn.disabled = count !== 1;
 
         const allSelected = (count === totalCheckboxes && totalCheckboxes > 0);
         const someSelected = (count > 0 && count < totalCheckboxes);
