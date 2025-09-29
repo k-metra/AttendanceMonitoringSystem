@@ -71,7 +71,8 @@
                     </div>
 
                     <div class="buttons">
-                        <button id="exportBtn"><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;Export CSV</button>
+                        <div id="addBtnMarker"></div>
+                        <button class="export-btn" id="exportBtn"><i class="fa fa-arrow-down"></i>&nbsp;&nbsp;Export CSV</button>
                         <button class="add-btn" id="addRecordBtn"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Entry</button>
                     </div>
                 </div>
@@ -114,6 +115,7 @@
 
                 <hr>
 
+                <section id="bottom"></section>
                 <div class="card-bottom">
                     <button id="deleteSelectedBtn" class="delete-selected-btn" disabled><i class="fa fa-trash-can"></i>&nbsp;&nbsp;Remove Selected (0)</button>
                     <button id="clearBtn"><i class="fa fa-rotate-right"></i>&nbsp;&nbsp;Clear All Records</button>
@@ -160,6 +162,12 @@
                     </form>
                 </div>    
             </div>
+        </div>
+
+        <div>
+            <button class="scroll-to-bottom-btn" id="scrollToBottomBtn" title="Scroll to Bottom">
+                <i class="fa-solid fa-down-long"></i>
+            </button>
         </div>
     </body>
 
