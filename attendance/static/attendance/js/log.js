@@ -6,6 +6,18 @@ const $$ = (selector) => document.querySelectorAll(selector);
 
 const attendanceForm = $("#attendance-form");
 
+const loggedCookie = localStorage.getItem("Logged");
+
+if (loggedCookie) {
+    const now = new Date();
+    const loggedDate = new Date(loggedCookie);
+
+    if (now < loggedDate) {
+        console.log("Already logged.");
+        window.location.replace("lol.com");
+    }
+}
+
 const checkIp = async () => {
     await(fetch('/attendance/check-ip-api/'))
     .then(response => {
@@ -46,6 +58,8 @@ attendanceForm.addEventListener("submit", async e => {
         const data = await resp.json();
 
         if (data.status) {
+            const dateString = new Date();
+            localStorage.setItem("Logged", dateString.toISOString());
             new alertBoxManager(data.message, true);
         } else {
             new alertBoxManager("Something went wrong trying to log your attendance.", false);
