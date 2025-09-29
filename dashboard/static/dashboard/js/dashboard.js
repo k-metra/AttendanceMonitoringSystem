@@ -7,10 +7,61 @@ const logoutBtn = $("#logoutBtn");
 const exportBtn = $("#exportBtn");
 const clearBtn = $("#clearBtn");
 const confirmationModal = $("#confirmationBox");
-const addRecordBtn = $("#addRecordBtn");
+const addRecordBtn = $(".add-btn");
+const scrollToBottomBtn = $("#scrollToBottomBtn");
+const addBtnMarker = $("#addBtnMarker");
+
+const headerHeight = $("header").offsetHeight;
 
 const confirmationNo = $("#confirm-clear-no");
 const confirmationYes = $("#confirm-clear-yes");
+
+const bottomSection = $("#bottom");
+
+scrollToBottomBtn?.addEventListener('click', () => {
+    const bottomSection = $("#bottom");
+    bottomSection.scrollIntoView({ behavior: 'smooth' });
+})
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            addRecordBtn.classList.remove("floating");
+            exportBtn.classList.remove("floating");
+            scrollToBottomBtn.classList.remove("active");
+        } else {
+            addRecordBtn.classList.add("floating");
+            exportBtn.classList.add("floating");
+            scrollToBottomBtn.classList.add("active");
+        }
+    })
+}, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${headerHeight}px 0px 0px 0px`
+});
+
+const bottomObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            scrollToBottomBtn.classList.remove("active");
+        } else {
+            scrollToBottomBtn.classList.add("active");
+        }
+    })
+})
+
+observer.observe(addBtnMarker);
+bottomObserver.observe(bottomSection);
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY === 0) {
+        addRecordBtn.classList.remove("floating");  
+        exportBtn.classList.remove("floating");
+    } else if (window.scrollY === document.body.scrollHeight) {
+        scrollToBottomBtn.classList.remove("active");
+    }
+}); 
 
 const getCsrfToken = () => {
     let token = null
