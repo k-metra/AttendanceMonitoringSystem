@@ -1,4 +1,5 @@
 import { EntryBox } from "./addNewEntry.js";
+import { EditBox } from "./editCurrentEntry.js";
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
@@ -6,6 +7,7 @@ const $$ = (selector) => document.querySelectorAll(selector);
 const logoutBtn = $("#logoutBtn");
 const exportBtn = $("#exportBtn");
 const clearBtn = $("#clearBtn");
+const editBtn = $("#editEntryBtn");
 const confirmationModal = $("#confirmationBox");
 const addRecordBtn = $(".add-btn");
 const scrollToBottomBtn = $("#scrollToBottomBtn");
@@ -135,6 +137,15 @@ logoutBtn.addEventListener("click", async () => {
 
 addRecordBtn?.addEventListener("click", () => {
     new EntryBox();
+})
+
+editBtn.addEventListener("click", () => {
+    const selected = $("tr.selected");
+
+    const log_id = selected.querySelector(".Log_ID").textContent;
+    const student_id = selected.querySelector(".Student_Number").textContent;
+    const full_name = selected.querySelector(".Full_Name").textContent;
+    new EditBox(log_id, student_id, full_name);
 })
 
 /*window.addEventListener("beforeunload", (e) => {
