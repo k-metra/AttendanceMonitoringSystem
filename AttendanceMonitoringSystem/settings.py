@@ -25,9 +25,9 @@ SECRET_KEY = 'django-insecure-@zdzn52fz8)ig8oxin14$y2sp7s@jary8pjw9bvmrsi%8x+(_d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '192.168.1.51']
+ALLOWED_HOSTS = ['localhost', '192.168.1.51', '192.168.1.142', 'noncontributively-laminar-callan.ngrok-free.dev']
 
-
+CSRF_TRUSTED_ORIGINS = ['https://noncontributively-laminar-callan.ngrok-free.dev']
 # Application definition
 
 INSTALLED_APPS = [
