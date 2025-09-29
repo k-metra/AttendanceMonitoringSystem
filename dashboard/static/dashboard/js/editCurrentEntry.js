@@ -61,7 +61,8 @@ class EditBox {
             } else {
                 return resp.json();
             }
-        }).then(data => {
+        })
+        .then(data => {
             if (data.status) {
                 window.location.reload();
             } else {
