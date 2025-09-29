@@ -129,6 +129,13 @@ button[type="submit"]:hover {
     background: rgba(255,255,255,0.1);
 }
 
+@media (max-width: 1367px) {
+    .modal-content {
+        width: 30%;
+        height: 25%;
+    }
+}
+
 @media (max-width: 600px) {
     .modal-content {
         width: 80%;
