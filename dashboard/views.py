@@ -115,3 +115,23 @@ def dashboard_add_entry(request):
             return JsonResponse({"status": False, "message": ex.__str__()})
     else:
         return JsonResponse({"status": False, "message":"Invalid request method."}, status=400)
+
+@requires_csrf_token
+def dashboard_edit_entry(request):
+    if request.method == "POST":
+        try:
+            log_id = request.POST.get("log_id")
+            student_number = request.POST.get("student_number")
+            full_name = request.POST.get("full_name")
+
+            record = attendance.objects.get(log_id=log_id)
+
+            record.student_number = student_number
+            record.full_name = full_name
+
+            record.save()
+
+            return JsonResponse({"status": True, "message": "Successfully updated entry."})
+        except Exception as ex:
+            print("Ran into an error: " + ex.__str__())
+            return JsonResponse({"status": False, "message": ex.__str__()})
