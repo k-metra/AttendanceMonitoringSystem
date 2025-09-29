@@ -1,14 +1,14 @@
-const alertBox = document.getElementById('alert-box');
-const alertMessage = document.getElementById('alert-message');
-const alertBtn = document.getElementById('alert-btn');
+const modal = document.querySelector('.alert-modal');
+const alertMessage = document.querySelector('.alert-message');
+const alertBtn = document.querySelector('.close-alert-btn');
 
 function showAlert(message) {
     alertMessage.textContent = message;
-    alertBox.style.display = 'flex';
+    modal.style.display = 'flex';
 }
 
 alertBtn.addEventListener('click', () => {
-    alertBox.style.display = 'none';
+    modal.style.display = 'none';
 });
 
 export { showAlert };
